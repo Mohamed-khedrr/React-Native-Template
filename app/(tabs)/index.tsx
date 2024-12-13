@@ -1,74 +1,224 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
+import React, { useState } from "react";
+import Icons from "@/constants/icons";
+import Places from "@/constants/places";
+import * as Animatable from "react-native-animatable";
+import { router } from "expo-router";
+import PlaceSliderCard from "@/components/PlaceSliderCard";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const Home = () => {
+  const [activeLink, setActiveLink] = useState("MostViewed");
+  const settingsIcon = Icons.getSettingsIcon();
+  const links = [
+    { id: "MostViewed", txt: "Most Viewed" },
+    { id: "Nearby", txt: "Nearby" },
+    { id: "Latest", txt: "Latest" },
+  ];
+  const handlePress = () => {
+    // router.push("/PlaceDetailsPage"); // Navigate to the placeDetails page
+  };
 
-export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={styles.headerContainer}>
+          <View style={styles.headerTxt}>
+            <Text style={styles.headerName}> Hi, David 👋</Text>
+            <Text style={styles.headerExploreTxt}>Explore the world</Text>
+          </View>
+          <View style={styles.profileImgContainer}>
+            <Image
+              style={styles.profileImg}
+              source={require("../../assets/images/home/user-profile.png")}
+            />
+          </View>
+        </View>
+        <View style={styles.searchContainer}>
+          <View style={styles.searchInputContainer}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search places"
+              placeholderTextColor="#888888"
+            />
+          </View>
+          <TouchableOpacity style={styles.searchIcon}>
+            {settingsIcon}
+          </TouchableOpacity>
+        </View>
+        <View style={styles.popularContainer}>
+          <Text style={styles.popularTxt}>Popular places</Text>
+          <TouchableOpacity>
+            <Text style={styles.popularBtn}>View all </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.linksContainer}>
+          {links.map((link, index) => {
+            const isActive = activeLink === link.id;
+            return (
+              <Animatable.View
+                delay={3 - index * 120}
+                animation="slideInLeft"
+                key={index}
+                style={{ zIndex: 5, position: "relative" }}
+              >
+                <TouchableOpacity
+                  onPress={() => {
+                    setActiveLink(link.id);
+                  }}
+                  style={[
+                    styles.linkBtn,
+                    { backgroundColor: isActive ? "#2F2F2F" : "#FBFBFB" },
+                  ]}
+                  key={link.id}
+                >
+                  <Text
+                    style={[
+                      styles.linkTxt,
+                      { color: isActive ? "#FFF" : "#C5C5C5" },
+                    ]}
+                  >
+                    {link.txt}
+                  </Text>
+                </TouchableOpacity>
+              </Animatable.View>
+            );
+          })}
+        </View>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.slider}
+        >
+          <View style={{ width: 5 }}></View>
+          {Places.map((place, index) => {
+            return (
+              <PlaceSliderCard place={place} index={index} key={place.id} />
+            );
+          })}
+          <TouchableOpacity
+            onPress={handlePress}
+            style={{ width: 5 }}
+          ></TouchableOpacity>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
-}
+};
+
+export default Home;
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    backgroundColor: "#fff",
+    flex: 1,
+    paddingTop: 34,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 26,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  headerTxt: {
+    gap: 9,
+  },
+  headerName: {
+    fontSize: 30,
+    lineHeight: 36.5,
+    fontWeight: 600,
+    color: "#2F2F2F",
+  },
+  headerExploreTxt: {
+    fontWeight: 500,
+    fontSize: 20,
+    lineHeight: 24.2,
+    paddingStart: 8,
+    color: "#888888",
+  },
+  profileImgContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: "100%",
+    overflow: "hidden",
+  },
+  profileImg: {
+    maxWidth: "100%",
+    maxHeight: "100%",
+  },
+
+  searchContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: "#D2D2D2",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 31,
+    height: 58,
+    marginTop: 38,
+    marginBottom: 42,
+    marginHorizontal: 26,
+    position: "relative",
+    zIndex: 10,
+  },
+  searchInputContainer: {
+    flex: 1,
+  },
+  searchInput: {
+    fontSize: 16,
+  },
+  searchIcon: {
+    paddingStart: 29,
+    borderStartColor: "#D2D2D2",
+    borderStartWidth: 2,
+  },
+  popularContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 40,
+    marginHorizontal: 26,
+    zIndex: 8,
+  },
+  popularTxt: {
+    fontSize: 20,
+    fontWeight: 600,
+    lineHeight: 30,
+    color: "#2F2F2F",
+  },
+  popularBtn: {
+    position: "relative",
+    right: -1,
+    color: "#888888",
+    fontWeight: 600,
+  },
+  linksContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 45,
+    marginHorizontal: 26,
+  },
+  linkBtn: {
+    paddingHorizontal: 21,
+    borderRadius: 20,
+    height: 54,
+    justifyContent: "center",
+  },
+  linkTxt: {
+    fontWeight: 500,
+    color: "#C5C5C5",
+    lineHeight: 18,
+  },
+  slider: {
+    gap: 22,
+    marginBottom: 40,
   },
 });
