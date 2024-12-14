@@ -1,17 +1,11 @@
 import Icons from "@/constants/icons";
 import { BlurView } from "expo-blur";
-import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const DetailsHeader = (props: any) => {
   const { place, archiveIcon, arrowIcon } = props;
+  const placeLocationIcon = Icons.getPlaceLocationIcon();
   const navigation = useNavigation();
   return (
     <View style={styles.imageContainer}>
@@ -35,7 +29,7 @@ const DetailsHeader = (props: any) => {
         <View style={styles.placeNameContainer}>
           <Text style={styles.placeName}>{place.placeName}</Text>
           <View style={styles.locationContainer}>
-            <Text>{Icons.getPlaceLocationIcon()}</Text>
+            <Text>{placeLocationIcon}</Text>
             <View style={styles.locationDetails}>
               <Text style={styles.city}>{place.city},</Text>
               <Text style={styles.country}>{place.country}</Text>
