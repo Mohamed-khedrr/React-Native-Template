@@ -43,7 +43,7 @@ const PlaceSliderCard = (props: any) => {
           </BlurView>
         </TouchableOpacity>
         <View style={styles.detailsContainer}>
-          <BlurView intensity={40} style={styles.bluredData}>
+          <BlurView intensity={40} tint="dark" style={styles.bluredData}>
             <View
               style={{ flexDirection: "row", position: "relative", gap: 3 }}
             >
@@ -132,22 +132,22 @@ const styles = StyleSheet.create({
     right: 26,
     borderRadius: 15,
     overflow: "hidden",
-    ...Platform.select({
-      ios: {
-        shadowColor: "#FFFFFF1A",
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 0.4,
-        shadowRadius: 9,
-      },
-      android: {
-        elevation: 9,
-      },
-    }),
+    // ...Platform.select({
+    //   ios: {
+    //     shadowColor: "#FFFFFF1A",
+    //     shadowOffset: { width: 0, height: 5 },
+    //     shadowOpacity: 0.4,
+    //     shadowRadius: 9,
+    //   },
+    //   android: {
+    //     elevation: 9,
+    //   },
+    // }),
   },
   bluredData: {
     width: "100%",
     height: "100%",
-    backgroundColor: "#FFFFFF1A",
+    backgroundColor: "#1D1D1D66",
     paddingTop: 11,
     paddingBottom: 16,
     paddingHorizontal: 16,

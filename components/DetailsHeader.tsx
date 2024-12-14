@@ -26,12 +26,12 @@ const DetailsHeader = (props: any) => {
           </BlurView>
         </TouchableOpacity>
         <TouchableOpacity style={styles.headerButton}>
-          <BlurView intensity={40} tint="default" style={styles.backBtn}>
+          <BlurView intensity={40} tint="dark" style={styles.backBtn}>
             {archiveIcon}
           </BlurView>
         </TouchableOpacity>
       </View>
-      <BlurView intensity={40} tint="dark" style={styles.placeData}>
+      <BlurView intensity={100} tint="dark" style={styles.placeData}>
         <View style={styles.placeNameContainer}>
           <Text style={styles.placeName}>{place.placeName}</Text>
           <View style={styles.locationContainer}>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   backBtn: {
     width: "100%",
     height: "100%",
-    backgroundColor: "#1D1D1D66",
+    backgroundColor: "#1D1D1D4D",
     borderRadius: "50%",
     overflow: "hidden",
     justifyContent: "center",
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     bottom: 29,
     left: 22,
     right: 22,
-    backgroundColor: "#1D1D1D4D",
     flexDirection: "row",
     justifyContent: "space-between",
     paddingStart: 15,
@@ -104,17 +103,17 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
     borderRadius: 15,
     overflow: "hidden",
-    ...Platform.select({
-      ios: {
-        shadowColor: "#FFFFFF1A",
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 0.4,
-        shadowRadius: 9,
-      },
-      android: {
-        elevation: 9,
-      },
-    }),
+    // ...Platform.select({
+    //   ios: {
+    //     shadowColor: "#FFFFFF1A",
+    //     shadowOffset: { width: 0, height: 5 },
+    //     shadowOpacity: 0.4,
+    //     shadowRadius: 9,
+    //   },
+    //   android: {
+    //     // elevation: 9,
+    //   },
+    // }),
   },
   placeNameContainer: {
     gap: 18,
