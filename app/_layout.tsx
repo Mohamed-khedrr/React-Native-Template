@@ -4,13 +4,11 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 
-import { useColorScheme } from "@/hooks/useColorScheme";
 import { View, StyleSheet, Text } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   SplashScreen.hideAsync();
 
   // const [loaded] = useFonts({
