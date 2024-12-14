@@ -52,7 +52,8 @@ export default DetailsHeader;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    height: 460,
+    // height: 460,
+    height: "50%",
     position: "relative",
     borderRadius: 25.5,
     overflow: "hidden",
