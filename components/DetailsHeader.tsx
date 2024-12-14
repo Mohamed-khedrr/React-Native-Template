@@ -26,7 +26,7 @@ const DetailsHeader = (props: any) => {
           </BlurView>
         </TouchableOpacity>
         <TouchableOpacity style={styles.headerButton}>
-          <BlurView intensity={40} tint="dark" style={styles.backBtn}>
+          <BlurView intensity={40} tint="default" style={styles.backBtn}>
             {archiveIcon}
           </BlurView>
         </TouchableOpacity>
