@@ -1,7 +1,7 @@
 import React from "react";
 import { BlurView } from "expo-blur";
 import * as Animatable from "react-native-animatable";
-import { router } from "expo-router";
+import { useRouter } from "expo-router"; // for expo-router
 
 import {
   Image,
@@ -10,6 +10,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Pressable,
 } from "react-native";
 import Icons from "@/constants/icons";
 
@@ -19,8 +20,12 @@ const PlaceSliderCard = (props: any) => {
   const likeIcon = Icons.getLikeIcon();
   const placeIcon = Icons.getPlaceLocationIcon();
   const starIcon = Icons.getStarIcon();
+  const router = useRouter();
+
   const handleNavigateToDetails = () => {
-    router.push("/PlaceDetailsPage"); // Navigate to PlaceDetailsPage
+    router.push({
+      pathname: "/PlaceDetailsPage",
+    });
   };
   return (
     <Animatable.View
@@ -28,45 +33,46 @@ const PlaceSliderCard = (props: any) => {
       animation="slideInRight"
       style={styles.cardContainer}
     >
-      <View style={styles.imgContainer}>
-        <Image style={styles.slideImg} source={place.imgLink} />
-      </View>
-      <TouchableOpacity
-        style={styles.likeBtn}
-        onPress={handleNavigateToDetails}
-      >
-        <BlurView intensity={40} tint="dark" style={styles.bluredLike}>
-          {likeIcon}
-        </BlurView>
-      </TouchableOpacity>
-      <View style={styles.detailsContainer}>
-        <BlurView intensity={40} style={styles.bluredData}>
-          <View style={{ flexDirection: "row", position: "relative", gap: 3 }}>
-            <Text style={styles.placeName}>{place.placeName},</Text>
-            <Text style={styles.placeCity}>{place.city}</Text>
-          </View>
-
-          <View style={styles.placeData}>
+      <Pressable onPress={handleNavigateToDetails}>
+        <View style={styles.imgContainer}>
+          <Image style={styles.slideImg} source={place.imgLink} />
+        </View>
+        <TouchableOpacity style={styles.likeBtn}>
+          <BlurView intensity={40} tint="dark" style={styles.bluredLike}>
+            {likeIcon}
+          </BlurView>
+        </TouchableOpacity>
+        <View style={styles.detailsContainer}>
+          <BlurView intensity={40} style={styles.bluredData}>
             <View
-              style={{ flexDirection: "row", gap: 12, alignItems: "center" }}
+              style={{ flexDirection: "row", position: "relative", gap: 3 }}
             >
-              {placeIcon}
+              <Text style={styles.placeName}>{place.placeName},</Text>
+              <Text style={styles.placeCity}>{place.city}</Text>
+            </View>
+
+            <View style={styles.placeData}>
               <View
-                style={{ flexDirection: "row", gap: 4, alignItems: "center" }}
+                style={{ flexDirection: "row", gap: 12, alignItems: "center" }}
               >
-                <Text style={styles.location}>{place.city},</Text>
-                <Text style={styles.location}>{place.country}</Text>
+                {placeIcon}
+                <View
+                  style={{ flexDirection: "row", gap: 4, alignItems: "center" }}
+                >
+                  <Text style={styles.location}>{place.city},</Text>
+                  <Text style={styles.location}>{place.country}</Text>
+                </View>
+              </View>
+              <View
+                style={{ flexDirection: "row", alignItems: "center", gap: 6 }}
+              >
+                {starIcon}
+                <Text style={styles.rating}>{place.rate}</Text>
               </View>
             </View>
-            <View
-              style={{ flexDirection: "row", alignItems: "center", gap: 6 }}
-            >
-              {starIcon}
-              <Text style={styles.rating}>{place.rate}</Text>
-            </View>
-          </View>
-        </BlurView>
-      </View>
+          </BlurView>
+        </View>
+      </Pressable>
     </Animatable.View>
   );
 };

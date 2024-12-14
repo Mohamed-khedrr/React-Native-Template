@@ -24,7 +24,7 @@ const Home = () => {
     { id: "Latest", txt: "Latest" },
   ];
   const handlePress = () => {
-    // router.push("/PlaceDetailsPage"); // Navigate to the placeDetails page
+    router.push("/PlaceDetailsPage");
   };
 
   return (
@@ -104,10 +104,7 @@ const Home = () => {
               <PlaceSliderCard place={place} index={index} key={place.id} />
             );
           })}
-          <TouchableOpacity
-            onPress={handlePress}
-            style={{ width: 5 }}
-          ></TouchableOpacity>
+          <View style={{ width: 5 }}></View>
         </ScrollView>
       </SafeAreaView>
     </View>

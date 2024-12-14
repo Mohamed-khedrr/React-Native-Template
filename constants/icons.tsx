@@ -141,6 +141,47 @@ const Icons = {
       </Svg>
     );
   },
+  getArchiveIcon: () => {
+    return (
+      <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <Path
+          d="M16.82 2H7.18001C5.05001 2 3.32001 3.74 3.32001 5.86V19.95C3.32001 21.75 4.61001 22.51 6.19001 21.64L11.07 18.93C11.59 18.64 12.43 18.64 12.94 18.93L17.82 21.64C19.4 22.52 20.69 21.76 20.69 19.95V5.86C20.68 3.74 18.95 2 16.82 2Z"
+          stroke="#E1E1E1"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <Path
+          d="M16.82 2H7.18001C5.05001 2 3.32001 3.74 3.32001 5.86V19.95C3.32001 21.75 4.61001 22.51 6.19001 21.64L11.07 18.93C11.59 18.64 12.43 18.64 12.94 18.93L17.82 21.64C19.4 22.52 20.69 21.76 20.69 19.95V5.86C20.68 3.74 18.95 2 16.82 2Z"
+          stroke="#E1E1E1"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <Path
+          d="M9.25 8.05005C11.0257 8.70006 12.9743 8.70006 14.75 8.05005"
+          stroke="#E1E1E1"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </Svg>
+    );
+  },
+  getArrowIcon: () => {
+    return (
+      <Svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+        <Path
+          d="M6.37686 13L1.4375 8.06061C0.854167 7.47728 0.854167 6.52274 1.4375 5.9394L6.37686 1"
+          stroke="#E1E1E1"
+          strokeWidth="2"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </Svg>
+    );
+  },
 };
 
 export default Icons;
