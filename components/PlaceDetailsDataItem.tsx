@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
   },
   detailsContent: {
     marginVertical: 34,
+    marginBottom: 150,
   },
   dataItemContainer: {
     flexDirection: "row",
@@ -72,10 +73,10 @@ const styles = StyleSheet.create({
     marginBottom: 34,
   },
   description: {
-    color: "#1B1B1B",
-    fontSize: 16,
-    fontWeight: 400,
-    lineHeight: 24,
+    color: "#A5A5A5",
+    fontSize: 18,
+    fontWeight: 500,
+    lineHeight: 27,
   },
   sectionTitle: {
     color: "#1B1B1B",

@@ -1,33 +1,34 @@
+import CustomSplashScreen from "@/components/CustomSplashScreen";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
+import { View, StyleSheet } from "react-native";
 
-import { View, StyleSheet, Text } from "react-native";
-
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync(); // Prevent auto-hide of the splash screen
 
 export default function RootLayout() {
-  SplashScreen.hideAsync();
-
-  // const [loaded] = useFonts({
-  //   SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-  // });
-
   const [loaded, setLoaded] = useState(false);
+  const [fontsLoaded] = useFonts({
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    Lobster: require("../assets/fonts/Lobster-Regular.ttf"),
+  });
 
   setTimeout(() => {
     setLoaded(true);
-  }, 5000);
+  }, 3000);
 
   useEffect(() => {
-    if (loaded) {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
     }
-  }, [loaded]);
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) return null;
 
   if (!loaded) {
-    return <Text>Hello</Text>;
+    return <CustomSplashScreen />;
   }
 
   return (
