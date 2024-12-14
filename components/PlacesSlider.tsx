@@ -20,7 +20,8 @@ const PlaceSlider = () => (
 const styles = StyleSheet.create({
   slider: {
     gap: 22,
-    marginBottom: 40,
+    // marginBottom: 25,
+    marginBottom: "6%",
   },
 });
 

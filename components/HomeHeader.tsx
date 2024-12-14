@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     fontSize: 20,
     lineHeight: 24.2,
-    paddingStart: 8,
     color: "#888888",
   },
   profileImgContainer: {

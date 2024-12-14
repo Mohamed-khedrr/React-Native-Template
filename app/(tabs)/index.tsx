@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
     flex: 1,
-    paddingTop: 34,
+    // paddingTop: 34,
+    paddingTop: "6.5%",
   },
 });
 

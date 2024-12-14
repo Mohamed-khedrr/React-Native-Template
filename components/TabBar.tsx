@@ -84,8 +84,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     marginHorizontal: 1,
-    paddingTop: 10,
-    paddingBottom: 61,
+    // paddingTop: 10,
+    paddingTop: "2.4%",
+    // paddingBottom: 61,
+    paddingBottom: "14.5%",
   },
   tabBarItem: {
     flex: 1,

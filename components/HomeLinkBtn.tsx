@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
   linksContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 45,
+    // marginBottom: 45,
+    marginBottom: "8.5%",
     marginHorizontal: 26,
   },
   linkBtn: {
