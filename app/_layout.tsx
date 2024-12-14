@@ -2,27 +2,34 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-  });
+  SplashScreen.hideAsync();
+
+  // const [loaded] = useFonts({
+  //   SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+  // });
+
+  const [loaded, setLoaded] = useState(false);
+
+  setTimeout(() => {
+    setLoaded(true);
+  }, 5000);
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
     }
   }, [loaded]);
 
   if (!loaded) {
-    return null;
+    return <Text>Hello</Text>;
   }
 
   return (
