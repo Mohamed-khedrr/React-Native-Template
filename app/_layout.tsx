@@ -28,10 +28,13 @@ export default function RootLayout() {
   return (
     <View style={styles.container}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(tabs)"
+          options={{ headerShown: false, statusBarHidden: true }}
+        />
         <Stack.Screen
           name="PlaceDetailsPage"
-          options={{ headerShown: false }}
+          options={{ headerShown: false, statusBarHidden: true }}
         />
       </Stack>
       <StatusBar style="auto" />
