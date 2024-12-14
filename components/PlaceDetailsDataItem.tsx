@@ -6,9 +6,24 @@ const PlaceDetailsDataItem = (props: any) => {
   const { place } = props;
   const locationIcon = Icons.getPlaceLocationIcon();
   const dataArray = [
-    { id: "dataHours", icon: locationIcon, value: place.time, txt: "hours" },
-    { id: "dataTemp", icon: locationIcon, value: place.degree, txt: "°C" },
-    { id: "dataRate", icon: locationIcon, value: place.rate, txt: "" },
+    {
+      id: "dataHours",
+      icon: Icons.getFilledClock(),
+      value: place.time,
+      txt: "hours",
+    },
+    {
+      id: "dataTemp",
+      icon: Icons.getCloudIcon(),
+      value: place.degree,
+      txt: "°C",
+    },
+    {
+      id: "dataRate",
+      icon: Icons.getFilledStarIcon(),
+      value: place.rate,
+      txt: "",
+    },
   ];
 
   return (
