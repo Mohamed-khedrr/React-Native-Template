@@ -1,4 +1,3 @@
-// components/SearchBar.tsx
 import React from "react";
 import { View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import Icons from "@/constants/icons";

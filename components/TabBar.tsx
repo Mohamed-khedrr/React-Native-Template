@@ -22,7 +22,6 @@ const TabBar: React.FC<BottomTabBarProps> = ({
 
         const isFocused = state.index === index;
 
-        // each object is a function pointer returns Svg
         const icons: any = {
           index: Icons.getLocationIcon(isFocused),
           recentPlaces: Icons.getClockIcon(isFocused),

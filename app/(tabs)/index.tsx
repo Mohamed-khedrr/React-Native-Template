@@ -1,4 +1,3 @@
-// Home.tsx
 import React, { useState } from "react";
 import { View, SafeAreaView, StyleSheet } from "react-native";
 import HomeHeader from "@/components/HomeHeader";

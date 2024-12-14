@@ -1,7 +1,7 @@
 import React from "react";
 import { BlurView } from "expo-blur";
 import * as Animatable from "react-native-animatable";
-import { useRouter } from "expo-router"; // for expo-router
+import { useRouter } from "expo-router";
 
 import {
   Image,
